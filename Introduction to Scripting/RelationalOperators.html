@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            Using Relational Operators
+        </title>
+        <script type="text/javascript">
+            var name; //string entered by user 
+            var now = new Date(); //current date and time
+            var hour = now.getHours(); //current hours
+            //read the name from prompt box as a string
+            name = window.prompt("Please enter your name");
+            //determine whether it is morning
+            if(hour<12)
+            document.write("<h1>Good Morning, ");
+            //determine whether the time is PM
+            if(hour>=12)
+            {
+                //convert to a 12-clock
+                hour = hour - 12;
+                //determine whether it is before 6 PM
+                if(hour < 6)
+                document.write("<h1>Good Afternoon, ");
+                //determine whether it is after 6 PM
+                if(hour>=6)
+                document.write("<h1>Good evening, ");
+            } //end if
+        document.writeln(name + ", Welcome to JavaScript Programming!</h1>");
+        </script>
+    </head>
+    <body>
+        <p>
+            click to refresh
+        </p>
+    </body>
+</html>
