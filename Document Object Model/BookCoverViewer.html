@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>
+            Book Cover Viewer
+        </title>
+    <style type="text/css">
+        .thumbs{width: 192px;
+                height: 370px;
+                padding: 5px;
+                float: left}
+        .maining{width: 289px;
+                padding: 5px;
+                float: left}
+        .imgCover{height: 373px}
+        img{border: 1px solid black}
+    </style>
+    <script type="text/javascript">
+        var interval = null; //keeps track of the interval
+        var speed = 6; //determines the speed of the animation
+        var count = 0; //size of the image during the animation
+
+        // called repeatedly to animate the book cover
+        function run() {
+             count += speed;
+            // stop the animation when the image is large enough 
+                if (count >= 375) {
+                     window.clearInterval(interval);
+                    interval = null; 
+                }  // end if 
+                 var bigImage = document.getElementById("imgCover");
+                bigImage.style.width = (0.7656 * count) + "px";
+                  bigImage.style.height = count + "px";
+            } // end function run 
+
+        //inserts the proper image into the main image area and begins the animation 
+        function display(imgfile)
+        {
+            if(interval)
+                return;
+            var bigImage = document.getElementById("imgCover");
+            var newNode = document.createElement("img");
+            newNode.id = "imgCover";
+            newNode.src = imgfile;
+            newNode.alt = "Large image";
+            newNode.className = "imgCover";
+            newNode.style.width = "0px";
+            newNode.style.height = "0px";
+            bigImage.parentNode.replaceChild(newNode, bigImage);
+            count = 0; //start the image at size 0
+            interval = window.setInterval("run()",10); //animate
+        } //end function display 
+    </script>
+    </head>
+    <body>
+        <div id="mainimg" class="maining">
+            <img id="imgCover" src="Eloquent JavaScript Cover Page.jpg" alt="Eloquent JavaScript Cover Page" class="imgCover"/>
+        </div>
+        <div id="thumbs" class="thumbs">
+            <img src="Eloquent JavaScript Cover Page.jpg" alt="Eloquent JavaScript Cover Page" onclick="display('Eloquent JavaScript Cover Page')"/>
+            <img src="John Pollock JavaScript Cover Page.jpeg"alt="John Pollock JavaScript Cover Page" onclick="display('John Pollock JavaScript Cover Page')"/>
+            <img src="Nicolas JavaScript Cover Page.jpg" alt="Nicolas JavaScript Cover Page" onclick="display('Nicolas JavaScript Cover Page')"/>
+            <img src="Oreally JavaScript Cover Page.jpeg" alt="Oreally JavaScript Cover Page" onclick="display('Oreally JavaScript Cover Page')"/>
+            <img src="Ryan JavaScript Cover Page.jpg" alt="Ryan JavaScript Cover Page" onclick="display('Ryan JavaScript Cover Page')"/>
+            <img src="TJ Crowder JavaScript Cover Page.jpeg" alt="TJ Crowder JavaScript Cover Page" onclick="display('TJ Crowder JavaScript Cover Page')"/>
+        </div>
+    </body>
+</html>
