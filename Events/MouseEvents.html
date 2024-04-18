@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>
+            Events onmouseover and onmouseout
+        </title>
+        <style type="text/css">
+            body{background-color: wheat;}
+            table{border-style: groove;
+                    text-align: center;
+                    font-family: monospace;
+                    font-weight: bold}
+            td{width: 6em}
+        </style>
+        <script type="text/javascript">
+            image1 = new Image();
+            image1.src = "heading1.gif";
+            image2 = new Image();
+            image2.src = "heading2.gif";
+
+            function mouseOver(e)
+            {
+                if(!e)
+                    var e = window.event;
+                var target = getTarget(e);
+                //swap the image when the mouse moves over it
+                if(target.id == "heading")
+                    {
+                        target.src = image2.src;
+                        return;
+                    } //end if
+                    //if element's id is defined, assign the id to its color to turn the corresponding color 
+                    if(target.id)
+                        target.style.color = target.id;
+            } //end function mouseOver
+
+            function mouseOut(e)
+            {
+                if(!e)
+                    var e = window.event;
+                var target = getTarget(e);
+                //put the original image back when the mouse moves away
+                if(target.id === "heading")
+                {
+                    target.src = image1.src;
+                    return; 
+                } //end if 
+                //if an elements's id is defined, assign id to innerHTML to the color name
+                if(target.id)
+                    target.innerHTML = target.id;
+            } //end function mouseOut
+
+            //return either e.srcElement or e.target, whichever exists
+            function getTarget(e)
+            {
+                if(e.srcElement)
+                    return e.srcElement;
+                else
+                    return e.target;
+            } //end function getTarget
+
+            document.onmouseover = mouseOver;
+            document.onmouseout = mouseOut; 
+        </script>
+    </head>
+    <body>
+        <img src="heading1.gif" id="heading" alt="Heading Image"/>
+        <p>Can you tell a color from its hexadecimal RGB code value? Look at the hex code, guess its color. To see what color it corresponds to, move the mouse over the hex code. Moving the mouse out of the hex code's table cell will display the color name.</p>
+        <table>
+            <tr>
+                <td id="Black">#000000</td>
+                <td id="Blue">#0000FF</td>
+                <td id="Magenta">#FF00FF</td>
+                <td id="Gray">#808080</td>
+            </tr>
+            <tr>
+                <td id="Green">#00800</td>
+                <td id="Lime">#00FF00</td>
+                <td id="Maroon">#800000</td>
+                <td id="Navy">#000080</td>
+            </tr>
+            <tr>
+                <td id="Olive">#808000</td>
+                <td id="Purple">#800080</td>
+                <td id="Red">#FF0000</td>
+                <td id="Silver">#C0C0C0</td>
+            </tr>
+            <tr>
+                <td id="Cyan">#00FFFF</td>
+                <td id="Teal">#008080</td>
+                <td id="Yellow">#FFFF00</td>
+                <td id="White">#FFFFFF</td>
+            </tr>
+        </table>
+    </body>
+</html>
