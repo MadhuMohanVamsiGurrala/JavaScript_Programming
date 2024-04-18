@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            String methods split and substring
+        </title>
+        <script type="text/javascript">
+            function splitButtonPressed()
+            {
+                var inputString = document.getElementById("inputVal").value;
+                var tokens = inputString.split(" ");
+                document.getElementById("output").value = tokens.join("\n");
+                document.getElementById("outputSubstring").value = inputString.substring(0,10);
+            } //end function splitButtonPressed
+        </script>
+    </head>
+    <body>
+        <form action=" ">
+            <p>Enter a sentence to split into words<br/>
+            <input id="inputVal" type="text" size="40"/>
+            <input type="button" value="Split" onclick="splitButtonPressed()" /></p>
+
+            <p>The sentence split into words is<br/>
+            <textarea id="output" rows="8" cols="34"></textarea> </p>
+
+            <p>The first 10 characters of the input string are 
+                <input id="outputSubstring" type="text" size="15"/>
+            </p>
+        </form>
+    </body>
+</html>

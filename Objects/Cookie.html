@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>
+            Using Cookies
+        </title>
+        <script type="text/javascript">
+            var now = new Date(); //current date and time
+            var hour = now.getHours(); //current hour(0-23)
+            var name; 
+
+            if(hour<12) //determine whether it is morning
+                document.write("<h1>Good Morning, ");
+            else
+            {
+                hour = hour - 12; //convert from 24-hour clock to PM time
+                //determine whether it is afternoon or evening 
+                if(hour<6)
+                    document.write("<h1>Good Afternoon, ");
+                else
+                    document.write("<h1>Good Evening, ");
+            } //end else
+
+            //determine whether there is a cookie
+            if(document.cookie)
+            {
+                //convert escape characters in the cookie string to their english notation
+                var myCookie = unescape(document.cookie);
+                //split the cookie into tokens using = as delimiter
+                var cookieTokens = myCookie.split("=");
+                //set name to the part of the cookie that follows the = sign 
+                name = cookieTokens[1];
+            } //end if 
+            else
+            {
+                //if there is no cookie, ask the user to input a name 
+                name = window.prompt("Please enter your name","Vamsi");
+                //escape special characters in the name string and add name to the cookie
+                document.cookie = "name"+escape(name);
+            } //end else 
+            document.writeln(name+", Welcome to JavaScript Programming!</h1>");
+            document.writeln("<a href = 'javascript:wrongPerson()'>"+"Click here if you are not "+name+"</a>");
+            //resets the document's cookie if wrong person
+            function wrongPerson()
+            {
+                //reset the cookie
+                document.cookie = "name=null;"+"expires=Thu, 01-Jan-95 00:00:01 GMT";
+                //reload the page to get the name after removing the cookies
+                location.reload();
+            } //end function wrongPerson
+        </script>
+    </head>
+    <body>
+        <p>click refresh</p>
+    </body>
+</html>
