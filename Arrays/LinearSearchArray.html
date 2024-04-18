@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>
+            Linear Search of an Array
+        </title>
+        <script type="text/javascript">
+            var a = new Array(100); // create an array
+
+            //fill array with even integer values from 0 to 198
+            for(var i=0; i<a.length; ++i)
+                a[i] = 2*i;
+
+            //function called when "Search" button is pressed
+            function buttonPressed()
+            {
+                //get the input text field
+                var inputVal = document.getElementById("inputVal");
+                //get the result text field
+                var result = document.getElementById("result");
+                //get the search key from the input text field
+                var searchKey = inputVal.value;
+                //Array a is passed to linearSeach even though it is a global variable. Normally an array will be passed to a method for searching
+                var element = linearSearch(a, parseInt(searchKey));
+                if(element != -1)
+                    result.value = "Found value in element "+element;
+                else
+                    result.vale = "Value not found";
+            } //end function buttonPressed
+            
+            // search "theArray" for the specified "key" value
+            function linearSearch(theArray, key) {
+                // iterates through each element of the array in order
+                for (var n = 0; n < theArray.length; ++n) {
+                     if (theArray[n] == key)
+                      {
+                        return n;
+                      }
+                    }
+    // if key is not found, return -1
+    return -1;
+}
+        </script>
+    </head>
+    <body>
+        <form action=" ">
+            <p>Enter integer search key<br />
+            <input id="inputVal" type="text"/>
+            <input type="button" value="Search" onclick="buttonPressed()"/><br /></p>
+            <p>Result <br/>
+            <input id="result" type="text" size="30"/> </p>
+        </form>
+    </body>
+</html>

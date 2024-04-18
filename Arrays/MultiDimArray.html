@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>
+            Initializing Multi Dimensional Arrays 
+        </title>
+        <script type="text/javascript">
+            var array1 = [[1,2,3],[4,5,6]]; //first and second rows
+            var array2 = [[1,2],[3],[4,5,6]];  //first and second and third rows
+
+            outputArray("Values in array1 by row", array1);
+            outputArray("Values in array2 by row", array2);
+
+            function outputArray(heading, theArray)
+            {
+                document.writeln("<h2>"+heading+"</h2><pre>");
+                    //iterates through the set of one dimensional arrays
+                    for(var i in theArray)
+                    {
+                        //iterates through the elements of each one dimensional array
+                        for(var j in theArray[i])
+                        document.write(theArray[i][j]+" ");
+                    document.writeln("<br />");
+                    } //end for
+                    document.writeln("</pre>");
+            } //end function outputArray
+        </script>
+    </head>
+    <body></body>
+</html>

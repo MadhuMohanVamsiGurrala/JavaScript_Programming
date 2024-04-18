@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>
+            Roll a Six-Sided Die 6000 times
+        </title>
+        <style type="text/css">
+            table{width: 15em}
+            th{text-align: left}
+        </style>
+        <script type="text/javascript">
+            var face;
+            var frequency = [ , 0, 0, 0, 0, 0, 0]; //leave frequency[0] - uninitialized
+
+            //summarize results
+            for(var roll=1; roll<=6000; ++roll)
+            {
+                face = Math.floor(1+Math.random()*6);
+                ++frequency[face];
+            } //end for
+            document.writeln("<table border = \"1\"><thead>");
+            document.writeln("<th>Face</th>"+"<th>Frequency</th></thead><tboyd>");
+
+            //generate entire table of frequencies for each face
+            for(face=1; face<frequency.length; ++face)
+            document.writeln("<tr><td>"+face+"</td><td>"+frequency[face]+"</td></tr>");
+            document.writeln("</tbody></table>");
+        </script>
+    </head>
+    <body>
+        <p>click to refresh</p>
+    </body>
+</html>

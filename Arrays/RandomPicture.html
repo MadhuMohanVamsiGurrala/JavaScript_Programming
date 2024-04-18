@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Random Image Generator
+        </title>
+        <style type="text/css">
+            table{width: 15em}
+            th{text-align: left}
+        </style>
+        <script type="text/javascript">
+            var pictures = ["CPE", "EPT", "GPP", "GUI","PERF", "PORT", "SEO"];
+            //pick a random image from the pictures array and displays by creating an img tag and appending the src attribute to the filename
+            document.write("<img src=\""+pictures[Math.floor(Math.random()*7)]+".gif\"/>");
+        </script>
+    </head>
+    <body>
+        <p>click to refresh</p>
+    </body>
+</html>
