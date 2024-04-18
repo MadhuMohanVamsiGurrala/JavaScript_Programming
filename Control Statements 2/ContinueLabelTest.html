@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Using the continue statement with a label 
+        </title>
+        <script type="text/javascript">
+            nextRow: //target label of continue statement
+            for(var row=1; row<=5; ++row)
+            {
+                document.writeln("<br />");
+                for(var column=1; column<=10; ++column)
+                {
+                    if(column>row)
+                    continue nextRow; //next iteration of labeled loop
+                document.writeln("* ");
+                } //end for
+            } //end for
+        </script>
+    </head>
+    <body></body>
+</html>
